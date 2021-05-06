@@ -70,5 +70,9 @@
     <Build Include="storedprocedures\Get_AllUser.sql" />
     <Build Include="storedprocedures\Rmv_User.sql" />
     <Build Include="storedprocedures\Get_UserById.sql" />
+    <Build Include="storedprocedures\Get_AllRoles.sql" />
+    <Build Include="storedprocedures\Add_Role.sql" />
+    <Build Include="storedprocedures\Upd_Role.sql" />
+    <Build Include="storedprocedures\Rmv_Role.sql" />
   </ItemGroup>
 </Project>

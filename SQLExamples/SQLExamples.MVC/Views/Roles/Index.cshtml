@@ -1,0 +1,149 @@
+﻿@model Models.VMRoles
+@{
+    ViewBag.Title = "Index";
+}
+<div class="col-md-12 row">
+    <h2 class="col-md-12 d-block text-white">Accion success?: @TempData["IsSuccess"]</h2>
+    <h2 class="col-md-12 d-block text-white">LastRoleIdAdded: @TempData["LastRoleIdAdded"]</h2>
+    <div class="col-md-4 d-inline-block">
+        <h2>Add Role</h2>
+        <div>
+            @using (@Html.BeginForm("Add", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleName)
+                <button type="submit">Add</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 d-inline-block">
+        <h2>Updated Role</h2>
+        <div>
+            @using (Html.BeginForm("Upd", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleId)
+                @Html.TextBoxFor(m => m.Roles.RoleName)
+                @Html.TextBoxFor(m => m.Roles.Available)
+                <button type="submit">Update</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 d-inline-block">
+        <h2>Remove Role</h2>
+        <div>
+            @using (@Html.BeginForm("Rmv", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleId)
+                <button type="submit">Remove</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 d-inline-block">
+        <h2>Add Role by SP</h2>
+        <div>
+            @using (@Html.BeginForm("AddSP", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleName)
+                <button type="submit">Add</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 d-inline-block">
+        <h2>Updated Role by SP</h2>
+        <div>
+            @using (Html.BeginForm("UpdSP", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleId)
+                @Html.TextBoxFor(m => m.Roles.RoleName)
+                @Html.TextBoxFor(m => m.Roles.Available)
+                <button type="submit">Update</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-4 d-inline-block">
+        <h2>Remove Role by SP</h2>
+        <div>
+            @using (@Html.BeginForm("RmvSP", "Roles", FormMethod.Post))
+            {
+                @Html.AntiForgeryToken()
+                @Html.TextBoxFor(m => m.Roles.RoleId)
+                <button type="submit">Remove</button>
+            }
+        </div>
+    </div>
+    <div class="col-md-12 d-inline-block">
+        <div class="col-md-4 d-inline">
+            <h2>Get All</h2>
+            <div>
+                <table class="table table-hover table-striped table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleId)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleName)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.Available)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var m in Model.GetAll)
+                        {
+                            <tr>
+                                <td>@m.RoleId</td>
+                                <td>@m.RoleName</td>
+                                <td>@m.Available</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4 d-inline">
+            <h2>Get by where</h2>
+            <div>
+                <table class="table table-hover table-striped table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleId)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleName)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.Available)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>@Model.GetWithWhere.RoleId</td>
+                            <td>@Model.GetWithWhere.RoleName</td>
+                            <td>@Model.GetWithWhere.Available</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-md-4 d-inline">
+            <h2>Get All by SP</h2>
+            <div>
+                <table class="table table-hover table-striped table-light">
+                    <thead>
+                        <tr>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleId)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.RoleName)</th>
+                            <th scope="col">@Html.LabelFor(m => m.Roles.Available)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var m in Model.GetBySP)
+                        {
+                            <tr>
+                                <td>@m.RoleId</td>
+                                <td>@m.RoleName</td>
+                                <td>@m.Available</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
