@@ -36,11 +36,10 @@
             #region Insert and show field.
             // You able to put all into ZADBBase field but is more easier to read for separate
             var password = "Test".ToHash();
-            var cmd = "INSERT INTO [Users]([UserName],[Password],[NameFull],[Email]) VALUES('Test', '" + password + "', 'Test ZAORM', 'test@hotmail.com'); " +
-                      "SELECT * FROM [Users]";
+            var cmd = "INSERT INTO [Users]([UserName],[Password],[NameFull],[Email]) VALUES('Test', '" + password + "', 'Test ZAORM', 'test@hotmail.com');";
             var zABase = new ZABase(cmd, _cmdType);
-            var userInsert = _db.Post<IEnumerable<Users>>(zABase);
-            ShowData("userInsert - TSQL", userInsert); // Show all data.
+            //var userInsert = _db.Post(zABase);
+            //ShowData("user Insert - TSQL\nResult:", userInsert); // Show all data.
             #endregion
             #region Select * or all fields.
             // I put top(10) for make the test more faster.
@@ -56,18 +55,16 @@
             #endregion
             #region update and show field.
             // You able to put all into ZADBBase field but is more easier to read for separate
-            cmd = "UPDATE [Users] SET [UserName] = 'test1' WHERE [UserName] = 'Test'" +
-                  "SELECT * FROM [Users]";
+            cmd = "UPDATE [Users] SET [UserName] = 'test1' WHERE [UserName] = 'Test'";
             zABase = new ZABase(cmd, _cmdType);
-            var userUpdate = _db.Post<IEnumerable<Users>>(zABase);
-            ShowData("userUpdate - TSQL", userUpdate); // Show all data.
+            var userUpdate = _db.Post(zABase);
+            ShowData("user Update - TSQL\nResult:", userUpdate); // Show all data.
             #endregion
             #region Delete and show field.
             // You able to put all into ZADBBase field but is more easier to read for separate
-            cmd = "DELETE FROM [Users] WHERE [UserName] = 'test1'" +
-                  "SELECT * FROM [Users]";
+            cmd = "DELETE FROM [Users] WHERE [UserName] = 'test1'";
             zABase = new ZABase(cmd, _cmdType);
-            var userDelete = _db.Post<IEnumerable<Users>>(zABase);
+            var userDelete = _db.Post(zABase);
             ShowData("userDelete - TSQL", userDelete); // Show all data.
             #endregion
         }
@@ -128,7 +125,7 @@
         private static void ShowData<T>(string _titleTest, T _model)
         {
             Console.WriteLine("Test: " + _titleTest);
-            Console.WriteLine(_model);
+            Console.Write(_model);
             Console.WriteLine();
         }
         #endregion

@@ -8,9 +8,4 @@ BEGIN
    SET [RoleName] = @RoleName,
        [Available] = @Available
    WHERE [RoleId] = @RoleId;
-
-  SELECT [RoleId] 
-   FROM [Roles] 
-   WHERE [RoleName] = @RoleName 
-   ORDER BY [RoleName] DESC;
 END

@@ -7,6 +7,4 @@ AS
 BEGIN
   INSERT INTO [Users]([UserName], [Password], [NameFull], [Email])
    VALUES(@UserName, @Password, @NameFull, @Email);
-  -- Same comment, select top(10) only for more faster the tests.
-  SELECT TOP(10) * FROM [Users];
 END

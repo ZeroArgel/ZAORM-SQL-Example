@@ -3,6 +3,4 @@
 AS
 BEGIN
   DELETE FROM [Users] WHERE [UserName] = @UserName;
-
-  SELECT TOP(10) * FROM [Users];
 END
